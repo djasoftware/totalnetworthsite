@@ -1,11 +1,118 @@
-    <!-- ── PRIVACY ── -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Networth</title>
+    <meta name="description" content="A simple, private iOS app to track your net worth. 100% offline.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23333'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='system-ui'>$</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; color: #222; background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; }
+        #privacy, #support { scroll-margin-top: 24px; }
+        .hero {
+            background: linear-gradient(180deg, #F5F5F5 0%, #fff 100%);
+            text-align: center;
+            padding: 72px 24px 56px;
+        }
+        .hero h1 { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 12px; color: #111; }
+        .hero h1 span { color: #333; }
+        .hero > p { color: #666; font-size: 1.05rem; max-width: 500px; margin: 0 auto 28px; }
+        .dl-btn { display: inline-flex; align-items: center; gap: 10px; background: #007AFF; color: #fff; padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: 1rem; transition: all 0.2s; box-shadow: 0 4px 16px rgba(0,122,255,0.3); }
+        .dl-btn:hover { background: #0066DD; transform: translateY(-2px); }
+        .dl-btn svg { width: 20px; height: 20px; }
+        .tags { display: flex; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+        .tag { font-size: 0.8rem; font-weight: 600; color: #444; background: #fff; border: 1px solid #ddd; padding: 6px 16px; border-radius: 100px; }
+        .features { padding: 56px 24px; background: #FAFAFA; }
+        .features-inner { max-width: 960px; margin: 0 auto; }
+        .features h2 { text-align: center; font-size: 1.5rem; font-weight: 800; margin-bottom: 32px; color: #111; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .feat { background: #fff; border: 1px solid #eee; border-radius: 14px; padding: 24px 20px; }
+        .feat .icon { font-size: 1.5rem; margin-bottom: 10px; }
+        .feat h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: #222; }
+        .feat p { font-size: 0.84rem; color: #666; line-height: 1.6; }
+        .content { max-width: 720px; margin: 0 auto; padding: 56px 24px; }
+        .content h2 { font-size: 1.3rem; font-weight: 800; color: #222; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #eee; }
+        .content h3 { font-size: 0.92rem; font-weight: 700; margin: 16px 0 4px; color: #333; }
+        .content p, .content li { font-size: 0.9rem; color: #555; margin-bottom: 8px; }
+        .content ul { padding-left: 18px; margin: 6px 0 12px; }
+        .content li { margin-bottom: 4px; }
+        .sub { font-size: 0.78rem; color: #999; margin-bottom: 14px; }
+        .divider { border: none; height: 1px; background: #eee; margin: 40px 0; }
+        .email-btn { display: inline-flex; align-items: center; gap: 8px; background: #333; color: #fff; padding: 11px 24px; border-radius: 100px; font-weight: 600; font-size: 0.88rem; margin-top: 6px; transition: all 0.2s; }
+        .email-btn:hover { background: #555; }
+        .email-btn svg { width: 15px; height: 15px; }
+        .faq b { display: block; font-size: 0.9rem; color: #222; margin-top: 14px; }
+        .faq p { font-size: 0.84rem; color: #666; margin: 2px 0 0; }
+        .footer { text-align: center; padding: 28px 24px; border-top: 1px solid #eee; }
+        .footer p { font-size: 0.72rem; color: #bbb; margin-bottom: 2px; }
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero { padding: 56px 20px 44px; }
+            .features { padding: 40px 20px; }
+            .content { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Total <span>Networth</span></h1>
+        <p>A simple, private iOS app to track your assets, liabilities, and savings goals. All data stays on your device.</p>
+        <a href="https://apps.apple.com/app/idYOUR_APP_ID_HERE" class="dl-btn" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Download on the App Store
+        </a>
+        <div class="tags">
+            <div class="tag">100% Offline</div>
+            <div class="tag">60+ Currencies</div>
+            <div class="tag">Private &amp; Secure</div>
+        </div>
+    </div>
+    <div class="features">
+        <div class="features-inner">
+            <h2>What You Can Do</h2>
+            <div class="features-grid">
+                <div class="feat">
+                    <div class="icon">&#128200;</div>
+                    <h3>Track Net Worth</h3>
+                    <p>See your total net worth at a glance. Green when positive, red when you owe more than you own.</p>
+                </div>
+                <div class="feat">
+                    <div class="icon">&#128176;</div>
+                    <h3>Assets & Liabilities</h3>
+                    <p>Add everything you own and owe. Categorize assets as liquid (cash-ready) or non-liquid (property).</p>
+                </div>
+                <div class="feat">
+                    <div class="icon">&#127919;</div>
+                    <h3>Savings Goals</h3>
+                    <p>Set targets for your liquid assets and track progress with visual bars.</p>
+                </div>
+                <div class="feat">
+                    <div class="icon">&#9889;</div>
+                    <h3>Quick Updates</h3>
+                    <p>Add, subtract, or edit amounts with one tap. See a live preview before saving.</p>
+                </div>
+                <div class="feat">
+                    <div class="icon">&#128274;</div>
+                    <h3>PIN Lock</h3>
+                    <p>Protect your data with a 4-digit PIN. Auto-locks when you leave the app.</p>
+                </div>
+                <div class="feat">
+                    <div class="icon">&#128178;</div>
+                    <h3>60+ Currencies</h3>
+                    <p>Choose your currency from over 60 options worldwide. Dark mode included.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="content" id="privacy">
-
         <h2>Privacy Policy</h2>
         <p class="sub">Effective date: February 2026 · Last updated: February 2026</p>
-
         <p>Total Networth ("the App") is developed and operated by Deo Jose Anthonio Balasbas. This privacy policy explains how the App handles your information.</p>
-
         <h3>Data Collection</h3>
         <p><strong>We do not collect any data.</strong> The App operates entirely offline. No personal information is collected, stored on any server, or shared with anyone.</p>
         <ul>
@@ -15,32 +122,23 @@
             <li>No cookies or web tracking</li>
             <li>No network connections of any kind</li>
         </ul>
-
         <h3>Data Storage</h3>
         <p>All data you enter (assets, liabilities, goals, settings, and PIN) is stored locally on your device using Apple's SwiftData framework. This data exists only on your device and is not accessible to us or any third party.</p>
-
         <h3>PIN Security</h3>
         <p>If you enable the optional PIN lock, your PIN is never stored as plain text. It is hashed using SHA256 with a unique cryptographic salt before being saved to your device.</p>
-
         <h3>Your Rights</h3>
         <p>Since all data is stored locally on your device, you have full control over it at all times. You can view, modify, or delete any data within the App. To delete all data completely, uninstall the App from your device.</p>
-
         <h3>Children's Privacy</h3>
         <p>The App does not collect personal information from anyone, including children under the age of 13. The App complies with the Children's Online Privacy Protection Act (COPPA).</p>
-
         <h3>Changes to This Policy</h3>
         <p>If we make changes to this privacy policy, the updated version will be posted on this page with a new "Last updated" date. We encourage you to review this page periodically.</p>
-
         <h3>Contact Us</h3>
-        <p>If you have any questions about this privacy policy, please contact us at:</p>
-        <a href="mailto:dja.softwarestudio+support@gmail.com" class="email-btn" style="margin-bottom: 0;">
+        <p>If you have any questions about this privacy policy, please contact us:</p>
+        <a href="mailto:dja.softwarestudio+support@gmail.com" class="email-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Send Us an Email
         </a>
-
         <hr class="divider">
-
-        <!-- ── SUPPORT ── -->
         <div id="support">
             <h2>Support</h2>
             <p>Questions, bugs, or feedback? Reach out anytime.</p>
@@ -48,7 +146,6 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 Send Us an Email
             </a>
-
             <div class="faq" style="margin-top: 28px;">
                 <h3>FAQ</h3>
                 <b>I forgot my PIN.</b>
@@ -61,5 +158,22 @@
                 <p>Yes. Over 60 currencies available in Settings.</p>
             </div>
         </div>
-
     </div>
+    <div class="footer">
+        <p>Know what you own. Know what you owe. Know your worth.</p>
+        <p>Apple and the Apple logo are trademarks of Apple Inc.</p>
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                var target = document.querySelector(window.location.hash);
+                if (target) {
+                    setTimeout(function() {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
